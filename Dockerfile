@@ -15,4 +15,7 @@ RUN pip install --no-cache \
 	pip==18 \
 	spidev
 
+COPY spidev_test.c /home/
+RUN gcc -o /usr/bin/spidev_test /home/spidev_test.c
+
 CMD ["python"]
