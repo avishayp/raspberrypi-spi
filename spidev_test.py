@@ -31,6 +31,7 @@ def main(bus, dev):
        	print("max speed: %d Hz (%d KHz)\n" % (s.max_speed_hz, s.max_speed_hz//1000));
         
         res = s.xfer(test_payload)
+        assert any(res), "spi loopback read all zeros: make sure pins GPIO-10 & GPIO-9 are shorted! (jumped)"
         assert res == test_payload
         for chunk in range(0, len(res), arr_size):
             print(' '.join(format(r, '02X') for r in res[chunk:chunk + arr_size]))
