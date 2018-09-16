@@ -22,14 +22,15 @@ max_speed = 500000
 # for printing only
 arr_size = 6
 
+
 def main(bus, dev):
     with spidev.SpiDev() as s:
         s.open(bus, dev)
         s.max_speed_hz = max_speed
-        print("spi mode: %d" % s.mode);
-       	print("bits per word: %d" % s.bits_per_word);
-       	print("max speed: %d Hz (%d KHz)\n" % (s.max_speed_hz, s.max_speed_hz//1000));
-        
+        print("spi mode: %d" % s.mode)
+        print("bits per word: %d" % s.bits_per_word)
+        print("max speed: %d Hz (%d KHz)\n" % (s.max_speed_hz, s.max_speed_hz // 1000))
+
         res = s.xfer(test_payload)
         assert any(res), "spi loopback read all zeros: make sure pins GPIO-10 & GPIO-9 are shorted! (jumped)"
         assert res == test_payload
