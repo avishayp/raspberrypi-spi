@@ -1,9 +1,6 @@
-FROM alpine:3.8
+FROM avishayp/spidev_test
 
 RUN apk add --no-cache \
-	gcc \
-	linux-headers \
-	musl-dev \
 	python3 \
 	python3-dev
 
@@ -14,8 +11,5 @@ RUN cd /usr/bin \
 RUN pip install --no-cache \
 	pip==18 \
 	spidev
-
-COPY spidev_test.c /home/
-RUN gcc -o /usr/bin/spidev_test /home/spidev_test.c
 
 CMD ["python"]
