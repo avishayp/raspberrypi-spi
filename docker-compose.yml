@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+
+  spi:
+
+    build: .
+
+    devices:
+      # the spi bus
+      - "/dev/ttyAMA0:/dev/ttyAMA0"
+    volumes:
+      # used to probmode from container
+      - "/lib/modules:/lib/modules"
+      - "./:/srv"
+    command: "python /srv/spidev_test.py"
+    privileged: true
+
