@@ -1,6 +1,6 @@
 FROM avishayp/spidev_test
 
-RUN apk add --no-cache \
+RUN apk add --update --no-cache \
 	python3 \
 	python3-dev
 
